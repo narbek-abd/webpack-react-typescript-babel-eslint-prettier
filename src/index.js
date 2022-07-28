@@ -1,4 +1,5 @@
-import("./df.js").then(({ default: a }) => {
-    console.log(a());
-    console.log(4)
+import "./css.css";
+import("./sss.js").then(({default: ad}) => {
+    console.log(ad)
 })
+
