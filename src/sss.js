@@ -1,1 +1,3 @@
-import "./www.css"
+import asd from "./www.module.scss"
+
+console.log(asd)
