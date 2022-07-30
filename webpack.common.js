@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
@@ -8,18 +7,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(ts|js)x?$/i,
+        test: /\.jsx?$/i,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
-          options: {
-            presets: [
-              "@babel/preset-env",
-              "@babel/preset-react",
-              "@babel/preset-typescript",
-            ],
-          },
         },
+      },
+
+      {
+        test: /\.tsx?$/i,
+        exclude: /node_modules/,
+        use: ["babel-loader", "ts-loader"],
       },
     ],
   },
@@ -29,14 +27,9 @@ module.exports = {
       title: "Output Management",
     }),
 
-    // type checking
-    new ForkTsCheckerWebpackPlugin({
-      async: false
-    }),
-
     // eslint checking
-    new ESLintPlugin({
-      extensions: ["js", "jsx", "ts", "tsx"],
-    }),
+    // new ESLintPlugin({
+    //   extensions: ["js", "jsx", "ts", "tsx"],
+    // }),
   ],
 };
