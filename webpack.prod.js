@@ -8,6 +8,7 @@ module.exports = merge(common, {
   output: {
     path: path.resolve(__dirname, "public"),
     filename: "[name].[contenthash].js",
+    assetModuleFilename: 'static/[hash][ext][query]',
     clean: true,
   },
 
@@ -23,7 +24,7 @@ module.exports = merge(common, {
           {
             loader: "css-loader",
             options: {
-              modules: true
+              modules: true,
             },
           },
           {

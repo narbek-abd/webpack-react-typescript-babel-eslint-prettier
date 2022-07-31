@@ -19,17 +19,28 @@ module.exports = {
         exclude: /node_modules/,
         use: ["babel-loader", "ts-loader"],
       },
+
+      {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
+
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ["@svgr/webpack"],
+      },
     ],
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Output Management",
+      title: "React",
     }),
 
     // eslint checking
-    // new ESLintPlugin({
-    //   extensions: ["js", "jsx", "ts", "tsx"],
-    // }),
+    new ESLintPlugin({
+      extensions: ["js", "jsx", "ts", "tsx"],
+    }),
   ],
 };
