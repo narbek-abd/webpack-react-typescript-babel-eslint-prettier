@@ -1,6 +1,9 @@
+import Vv from "./cashback.svg";
+
+
 function App() {
   return (
-   <div>123</div>
+    <Vv />
   );
 }
 
