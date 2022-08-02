@@ -46,6 +46,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "React",
+      template: "./src/index.html"
     }),
 
     // eslint checking
