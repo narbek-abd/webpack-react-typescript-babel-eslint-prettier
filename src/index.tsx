@@ -1,6 +1,11 @@
-import "./ddd.scss"
-export default function a() {
-    console.log(3)
-}
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
 
-a()
+ReactDOM.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById("root")
+  );
+  
