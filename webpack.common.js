@@ -43,6 +43,10 @@ module.exports = {
     ],
   },
 
+  resolve: {
+    extensions: ["*", ".css", ".scss", ".js", ".jsx", ".ts", ".tsx", ".json"],
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       title: "React",

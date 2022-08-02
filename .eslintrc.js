@@ -24,5 +24,10 @@ module.exports = {
       version: "detect",
     },
   },
-  rules: {},
+  rules: {
+    "no-empty-function": 0,
+    "@typescript-eslint/no-empty-function": 0,
+    "prefer-const": 0,
+    "react/react-in-jsx-scope": "off",
+  },
 };
