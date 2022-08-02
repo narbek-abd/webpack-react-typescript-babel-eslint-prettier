@@ -8,6 +8,3 @@ declare module "*.jpg" {
 declare module "*.svg" {
   export default "" as string;
 }
-
-
-declare module "*.css";
