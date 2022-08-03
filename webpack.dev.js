@@ -20,7 +20,6 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.(sa|sc|c)ss$/,
-        exclude: /node_modules/,
         use: [
           "style-loader",
           {
