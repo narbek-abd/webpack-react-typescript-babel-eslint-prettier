@@ -1,6 +1,10 @@
 const path = require("path");
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
+const webpack = require("webpack");
+
+require("dotenv").config({ path: "./.env" });
+require("dotenv").config({ path: "./.env.development" });
 
 module.exports = merge(common, {
   mode: "development",
@@ -11,7 +15,7 @@ module.exports = merge(common, {
   },
 
   devtool: "eval-cheap-module-source-map",
-  
+
   devServer: {
     static: "./public",
     historyApiFallback: true,
@@ -44,4 +48,10 @@ module.exports = merge(common, {
       },
     ],
   },
+
+  plugins: [
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(process.env),
+    }),
+  ],
 });
