@@ -14,6 +14,7 @@ module.exports = merge(common, {
     filename: "[name].[contenthash].js",
     assetModuleFilename: "static/[hash][ext][query]",
     clean: true,
+    publicPath: '/'
   },
 
   devtool: false,
@@ -21,15 +22,47 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /\.jsx?$/i,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+
+      {
+        test: /\.tsx?$/i,
+        exclude: /node_modules/,
+        use: ["babel-loader", "ts-loader"],
+      },
+      
+      {
+        test: /\.module\.(sa|sc|c)ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          "style-loader",
           {
             loader: "css-loader",
             options: {
               modules: true,
             },
           },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [["autoprefixer"]],
+              },
+            },
+          },
+          "sass-loader",
+        ],
+      },
+
+      {
+        test: /\.(sa|sc|c)ss$/,
+        exclude: /\.module\.(sa|sc|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
           {
             loader: "postcss-loader",
             options: {

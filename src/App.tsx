@@ -1,13 +1,21 @@
-import Vv from "./cashback.svg";
-import avatar_default from "./avatar_default.png";
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+const Cont = lazy(() => import("Src/Cont"));
 
 function App() {
-  console.log(process.env);
   return (
-    <div>
-      <img src={avatar_default} />
-      <Vv style={{ color: "red" }} />
-    </div>
+    <>
+      <BrowserRouter>
+        <Suspense fallback={"s"}>
+          <main id="main">
+            <Routes>
+            <Route path="/catalog" element={<Cont />} />
+            </Routes>
+          </main>
+        </Suspense>
+      </BrowserRouter>
+    </>
   );
 }
 
