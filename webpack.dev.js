@@ -2,7 +2,7 @@ const path = require("path");
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
 const webpack = require("webpack");
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 require("dotenv").config({ path: "./.env" });
 require("dotenv").config({ path: "./.env.development" });
@@ -13,7 +13,7 @@ module.exports = merge(common, {
     path: path.resolve(__dirname, "public"),
     filename: "[name].js",
     clean: true,
-    publicPath: '/'
+    publicPath: "/",
   },
 
   devtool: "eval-cheap-module-source-map",
@@ -21,7 +21,7 @@ module.exports = merge(common, {
   devServer: {
     static: "./public",
     historyApiFallback: true,
-    open: true
+    open: true,
   },
 
   module: {
@@ -31,9 +31,9 @@ module.exports = merge(common, {
         exclude: /node_modules/,
         use: [
           {
-            loader: require.resolve('babel-loader'),
+            loader: require.resolve("babel-loader"),
             options: {
-              plugins: [require.resolve('react-refresh/babel')].filter(Boolean),
+              plugins: [require.resolve("react-refresh/babel")].filter(Boolean),
             },
           },
         ],
@@ -42,7 +42,15 @@ module.exports = merge(common, {
       {
         test: /\.tsx?$/i,
         exclude: /node_modules/,
-        use: ["babel-loader", "ts-loader"],
+        use: [
+          {
+            loader: require.resolve("babel-loader"),
+            options: {
+              plugins: [require.resolve("react-refresh/babel")].filter(Boolean),
+            },
+          },
+          "ts-loader",
+        ],
       },
 
       {
