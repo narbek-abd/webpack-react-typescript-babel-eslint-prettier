@@ -20,6 +20,7 @@ module.exports = {
           {
             loader: "@svgr/webpack",
             options: {
+              svgProps: { "aria-hidden": "true" },
               babel: false,
               prettier: false,
               svgo: false,
